@@ -117,7 +117,7 @@ public class FileUtils {
         List<File> mixins = new ArrayList<>();
 
         for (File file : files) {
-            if (!(file.getPath().contains("/data/") || file.getPath().contains("/assets/") || file.getPath().contains("/config/"))) {
+            if (!((file.getPath().contains("/data/") || file.getPath().contains("/assets/") || file.getPath().contains("/config/")))) {
                 if (FilenameUtils.getExtension(file.getName()).equals("json")) {
                     String text = org.apache.commons.io.FileUtils.readFileToString(file, Charset.defaultCharset());
                     if (refmaps) {
