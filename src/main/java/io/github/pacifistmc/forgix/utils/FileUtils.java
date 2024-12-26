@@ -147,11 +147,13 @@ public class FileUtils {
         List<File> refmaps = new ArrayList<>();
 
         for (File file : files) {
-            if (FilenameUtils.getExtension(file.getName()).equals("json")) {
+            if (!((file.getPath().contains("/data/") || file.getPath().contains("/assets/") || file.getPath().contains("/config/")))) {
+                if (FilenameUtils.getExtension(file.getName()).equals("json")) {
                 String text = org.apache.commons.io.FileUtils.readFileToString(file, Charset.defaultCharset());
                 if (text.contains("\"mappings\":") || text.contains("\"data\":")) {
                     refmaps.add(file);
                 }
+            }
             }
         }
 
